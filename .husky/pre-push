@@ -1,0 +1,5 @@
+#!/usr/bin/env sh
+# Optional: full build check before push. Comment out if too slow locally.
+# Prepend dotnet install path so the hook works regardless of shell environment.
+export PATH="$HOME/.dotnet:$PATH"
+dotnet build /warnaserror --no-incremental -verbosity:quiet

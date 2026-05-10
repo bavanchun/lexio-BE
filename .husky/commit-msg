@@ -1,0 +1,2 @@
+#!/usr/bin/env sh
+dotnet husky run --name commitlint --args "$1"

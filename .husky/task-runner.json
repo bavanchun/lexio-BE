@@ -1,0 +1,28 @@
+{
+  "$schema": "https://alirezanet.github.io/Husky.Net/schema.json",
+  "tasks": [
+    {
+      "name": "dotnet-format-staged",
+      "command": "dotnet",
+      "args": [
+        "format",
+        "--include",
+        "${staged}",
+        "--verify-no-changes",
+        "--no-restore"
+      ],
+      "include": ["**/*.cs"],
+      "output": "verbose"
+    },
+    {
+      "name": "commitlint",
+      "command": "npx",
+      "args": [
+        "--no-install",
+        "commitlint",
+        "--edit",
+        "${args}"
+      ]
+    }
+  ]
+}

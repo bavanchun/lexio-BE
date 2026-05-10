@@ -1,0 +1,4 @@
+#!/usr/bin/env sh
+# Prepend dotnet install path so the hook works regardless of shell environment.
+export PATH="$HOME/.dotnet:$PATH"
+dotnet husky run --name dotnet-format-staged
