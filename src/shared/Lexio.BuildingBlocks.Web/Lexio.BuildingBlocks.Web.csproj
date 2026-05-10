@@ -1,0 +1,17 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <RootNamespace>Lexio.BuildingBlocks.Web</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <!-- AspNetCore framework reference brings DI, Configuration, Logging etc. transitively -->
+    <FrameworkReference Include="Microsoft.AspNetCore.App" />
+    <PackageReference Include="Serilog.AspNetCore" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="../Lexio.BuildingBlocks.Abstractions/Lexio.BuildingBlocks.Abstractions.csproj" />
+  </ItemGroup>
+
+</Project>

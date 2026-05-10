@@ -2,6 +2,12 @@
   <Folder Name="/src/" />
   <Folder Name="/src/shared/">
     <Project Path="src/shared/Lexio.BuildingBlocks.Abstractions/Lexio.BuildingBlocks.Abstractions.csproj" />
+    <Project Path="src/shared/Lexio.BuildingBlocks.Auth/Lexio.BuildingBlocks.Auth.csproj" />
+    <Project Path="src/shared/Lexio.BuildingBlocks.Caching/Lexio.BuildingBlocks.Caching.csproj" />
+    <Project Path="src/shared/Lexio.BuildingBlocks.Messaging/Lexio.BuildingBlocks.Messaging.csproj" />
+    <Project Path="src/shared/Lexio.BuildingBlocks.Observability/Lexio.BuildingBlocks.Observability.csproj" />
+    <Project Path="src/shared/Lexio.BuildingBlocks.Persistence/Lexio.BuildingBlocks.Persistence.csproj" />
+    <Project Path="src/shared/Lexio.BuildingBlocks.Web/Lexio.BuildingBlocks.Web.csproj" />
     <Project Path="src/shared/Lexio.SharedKernel/Lexio.SharedKernel.csproj" />
   </Folder>
   <Folder Name="/tests/" />
