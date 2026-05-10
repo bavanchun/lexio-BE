@@ -1,0 +1,34 @@
+# Gitleaks configuration — prevents committing secrets.
+# Run manually: gitleaks detect --source . --config .gitleaks.toml
+# Integrated with pre-commit in phase 10.
+
+title = "Lexio BE gitleaks config"
+
+[allowlist]
+  description = "Global allowlist"
+  paths = [
+    '''.env\.example''',            # example file — no real secrets
+    '''appsettings\.json''',         # only non-secret defaults
+    '''appsettings\.Development\.json''',
+    '''\.gitleaks\.toml''',
+    '''\.env\.example''',
+  ]
+
+[[rules]]
+  description = "Block real .env files"
+  id = "env-file"
+  path = '''(^|/)\.env$'''
+  # If .env is staged, it's a violation
+  regex = '''.+'''
+
+[[rules]]
+  description = "Block appsettings.Local.json"
+  id = "appsettings-local"
+  path = '''appsettings\.Local\.json'''
+  regex = '''.+'''
+
+[[rules]]
+  description = "Private key / PFX files"
+  id = "private-key-file"
+  path = '''\.(pfx|p12|pem|key)$'''
+  regex = '''.+'''
