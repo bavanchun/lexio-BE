@@ -11,8 +11,14 @@
     <Project Path="src/shared/Lexio.SharedKernel/Lexio.SharedKernel.csproj" />
   </Folder>
   <Folder Name="/tests/" />
+  <Folder Name="/tests/architecture/">
+    <Project Path="tests/architecture/Lexio.Architecture.Tests/Lexio.Architecture.Tests.csproj" />
+  </Folder>
   <Folder Name="/tests/shared/">
     <Project Path="tests/shared/Lexio.BuildingBlocks.Abstractions.Tests/Lexio.BuildingBlocks.Abstractions.Tests.csproj" />
     <Project Path="tests/shared/Lexio.SharedKernel.Tests/Lexio.SharedKernel.Tests.csproj" />
+  </Folder>
+  <Folder Name="/tests/_shared/">
+    <Project Path="tests/_shared/Lexio.TestUtils/Lexio.TestUtils.csproj" />
   </Folder>
 </Solution>
