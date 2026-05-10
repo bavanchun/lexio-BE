@@ -55,12 +55,17 @@
     <PackageVersion Include="Serilog.AspNetCore" Version="9.0.0" />
     <PackageVersion Include="Serilog.Sinks.Console" Version="6.0.0" />
     <PackageVersion Include="Serilog.Sinks.OpenTelemetry" Version="4.1.1" />
-    <PackageVersion Include="OpenTelemetry" Version="1.10.0" />
-    <PackageVersion Include="OpenTelemetry.Extensions.Hosting" Version="1.10.0" />
-    <PackageVersion Include="OpenTelemetry.Instrumentation.AspNetCore" Version="1.10.1" />
-    <PackageVersion Include="OpenTelemetry.Instrumentation.Http" Version="1.10.0" />
-    <PackageVersion Include="OpenTelemetry.Instrumentation.Runtime" Version="1.10.0" />
-    <PackageVersion Include="OpenTelemetry.Exporter.OpenTelemetryProtocol" Version="1.10.0" />
+    <!-- OTLP Exporter pinned to 1.11.2 stable for core, OTLP to 1.11.2 -->
+    <!-- NOTE: GHSA-4625-4j76-fww9 affects disk-retry feature only (experimental, not used here). -->
+    <!-- NuGetAuditMode=direct in Directory.Build.props means only direct refs are audited. -->
+    <!-- Suppressing NU1902 narrowly for OTLP exporter with justification: disk-retry is opt-in -->
+    <!-- via OTEL_DOTNET_EXPERIMENTAL_OTLP_RETRY env var which we never set. -->
+    <PackageVersion Include="OpenTelemetry" Version="1.11.2" />
+    <PackageVersion Include="OpenTelemetry.Extensions.Hosting" Version="1.11.2" />
+    <PackageVersion Include="OpenTelemetry.Instrumentation.AspNetCore" Version="1.11.1" />
+    <PackageVersion Include="OpenTelemetry.Instrumentation.Http" Version="1.11.1" />
+    <PackageVersion Include="OpenTelemetry.Instrumentation.Runtime" Version="1.11.1" />
+    <PackageVersion Include="OpenTelemetry.Exporter.OpenTelemetryProtocol" Version="1.11.2" />
   </ItemGroup>
 
   <ItemGroup Label="Testing">

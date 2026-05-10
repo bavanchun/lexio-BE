@@ -1,0 +1,17 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <RootNamespace>Lexio.BuildingBlocks.Auth</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <!-- AspNetCore framework reference brings DI, Configuration, Options etc. transitively -->
+    <FrameworkReference Include="Microsoft.AspNetCore.App" />
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="../Lexio.BuildingBlocks.Abstractions/Lexio.BuildingBlocks.Abstractions.csproj" />
+  </ItemGroup>
+
+</Project>
