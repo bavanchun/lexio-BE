@@ -118,29 +118,27 @@ jobs:
         run: dotnet restore
 
       - name: check for vulnerable packages
-        # Accepted advisories tracked here — reasons in Directory.Packages.props comments.
-        # GHSA-4625-4j76-fww9: OpenTelemetry OTLP exporter disk-retry (opt-in via OTEL_DOTNET_EXPERIMENTAL_OTLP_RETRY env var, never set).
-        # GHSA-g94r-2vxg-569j: OpenTelemetry.Api — informational; foundation has no exposed surface yet.
+        # Accepted advisories — justifications:
+        # GHSA-4625-4j76-fww9: OpenTelemetry OTLP exporter disk-retry, opt-in via OTEL_DOTNET_EXPERIMENTAL_OTLP_RETRY (never set).
+        # GHSA-g94r-2vxg-569j: OpenTelemetry.Api informational; foundation has no exposed surface yet.
         env:
           ACCEPTED_ADVISORIES: 'GHSA-4625-4j76-fww9 GHSA-g94r-2vxg-569j'
         run: |
           out=$(dotnet list package --vulnerable --include-transitive 2>&1 || true)
           echo "$out"
-          # Strip lines that mention only accepted advisories
-          filtered=$(echo "$out" | awk -v skip="$ACCEPTED_ADVISORIES" '
-            BEGIN { for (i=split(skip, arr, " "); i>0; i--) accepted[arr[i]] = 1 }
-            /github\.com\/advisories\// {
-              for (a in accepted) if (index($0, a)) { next }
-            }
-            { print }
-          ')
-          if echo "$filtered" | grep -q "has the following vulnerable packages"; then
-            # Re-check whether any non-accepted advisories remain
-            if echo "$filtered" | grep -qE "github\.com/advisories/"; then
-              echo "::error::Unaccepted vulnerable NuGet packages found — upgrade or add to ACCEPTED_ADVISORIES with justification"
-              exit 1
-            fi
+          found=$(echo "$out" | grep -oE 'GHSA-[a-zA-Z0-9-]+' | sort -u || true)
+          unaccepted=""
+          for id in $found; do
+            case " $ACCEPTED_ADVISORIES " in
+              *" $id "*) ;;
+              *) unaccepted="$unaccepted $id" ;;
+            esac
+          done
+          if [ -n "$unaccepted" ]; then
+            echo "::error::Unaccepted vulnerable advisories:$unaccepted — upgrade or add to ACCEPTED_ADVISORIES with justification"
+            exit 1
           fi
+          echo "All detected advisories are accepted."
 
       - name: trivy config scan (Dockerfiles + compose)
         uses: aquasecurity/trivy-action@0.35.0
