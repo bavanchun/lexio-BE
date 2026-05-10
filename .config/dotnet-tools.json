@@ -24,7 +24,7 @@
       "rollForward": false
     },
     "dotnet-reportgenerator-globaltool": {
-      "version": "5.3.8",
+      "version": "5.5.9",
       "commands": [
         "reportgenerator"
       ],
