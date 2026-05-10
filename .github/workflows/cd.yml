@@ -1,0 +1,28 @@
+name: cd
+
+# Manual-trigger only — no secrets wired yet.
+# Phase 3 (service implementation) will add docker build/push + K8s rollout.
+on:
+  workflow_dispatch:
+    inputs:
+      environment:
+        description: Target environment
+        required: true
+        type: choice
+        options:
+          - staging
+          - production
+
+jobs:
+  deploy:
+    name: deploy to ${{ inputs.environment }}
+    runs-on: ubuntu-latest
+    environment: ${{ inputs.environment }}
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: placeholder
+        run: |
+          echo "TODO Phase 3 — wire docker build/push + K8s rollout"
+          echo "Environment: ${{ inputs.environment }}"

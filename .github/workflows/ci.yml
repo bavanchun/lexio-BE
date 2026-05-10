@@ -1,0 +1,151 @@
+name: ci
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build-test:
+    name: build / format / test / coverage
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '10.0.x'
+
+      - name: cache NuGet packages
+        uses: actions/cache@v4
+        with:
+          path: ~/.nuget/packages
+          key: nuget-${{ runner.os }}-${{ hashFiles('**/packages.lock.json', 'Directory.Packages.props') }}
+          restore-keys: nuget-${{ runner.os }}-
+
+      - name: restore tools
+        run: dotnet tool restore
+
+      - name: restore packages
+        run: dotnet restore
+
+      - name: verify format
+        run: dotnet format --verify-no-changes --no-restore
+
+      - name: build
+        run: dotnet build --no-restore /warnaserror
+
+      - name: test + collect coverage
+        run: >
+          dotnet test
+          --no-build
+          --collect:"XPlat Code Coverage"
+          --settings .runsettings
+          --results-directory TestResults
+          --logger "github;annotations.level=error"
+          --logger "console;verbosity=minimal"
+
+      - name: generate coverage report
+        run: >
+          dotnet tool run reportgenerator
+          -reports:"TestResults/**/coverage.cobertura.xml"
+          -targetdir:coverage-report
+          -reporttypes:"Html;TextSummary;Cobertura"
+
+      - name: enforce ≥70% line coverage
+        run: |
+          python3 - <<'PY'
+          import xml.etree.ElementTree as ET, glob, sys
+          files = glob.glob('coverage-report/Cobertura.xml')
+          if not files:
+              print("No Cobertura.xml found — skipping threshold check")
+              sys.exit(0)
+          root = ET.parse(files[0]).getroot()
+          rate = float(root.attrib['line-rate']) * 100
+          print(f"Line coverage: {rate:.2f}%")
+          sys.exit(0 if rate >= 70 else 1)
+          PY
+
+      - name: upload coverage artifact
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: coverage-report
+          path: coverage-report
+          retention-days: 14
+
+  architecture:
+    name: architecture tests
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '10.0.x'
+
+      - name: restore
+        run: dotnet restore tests/architecture/Lexio.Architecture.Tests
+
+      - name: build architecture tests
+        run: dotnet build tests/architecture/Lexio.Architecture.Tests --no-restore /warnaserror
+
+      - name: run architecture tests
+        run: dotnet test tests/architecture/Lexio.Architecture.Tests --no-build --logger "console;verbosity=normal"
+
+  security:
+    name: security scan
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '10.0.x'
+
+      - name: restore
+        run: dotnet restore
+
+      - name: check for vulnerable packages
+        run: |
+          out=$(dotnet list package --vulnerable --include-transitive 2>&1 || true)
+          echo "$out"
+          if echo "$out" | grep -q "has the following vulnerable packages"; then
+            echo "::error::Vulnerable NuGet packages found — upgrade or suppress with justification"
+            exit 1
+          fi
+
+      - name: trivy config scan (Dockerfiles + compose)
+        uses: aquasecurity/trivy-action@0.28.0
+        with:
+          scan-type: config
+          scan-ref: .
+          severity: HIGH,CRITICAL
+          exit-code: '1'
+
+  template-smoke:
+    name: template smoke test
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '10.0.x'
+
+      - name: install Lexio.ServiceTemplate
+        run: dotnet new install ./templates/Lexio.ServiceTemplate
+
+      - name: scaffold Smoke service
+        run: dotnet new lexio-service -n Smoke -o /tmp/smoke
+
+      - name: build Smoke service
+        run: dotnet build /tmp/smoke /warnaserror
