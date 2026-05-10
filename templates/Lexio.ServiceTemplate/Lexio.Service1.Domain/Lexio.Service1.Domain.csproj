@@ -1,0 +1,9 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <RootNamespace>Lexio.Service1.Domain</RootNamespace>
+  </PropertyGroup>
+  <ItemGroup>
+    <!-- SharedKernel path is relative to this template — adjust when adding to the monorepo -->
+    <ProjectReference Include="../../../../src/shared/Lexio.SharedKernel/Lexio.SharedKernel.csproj" />
+  </ItemGroup>
+</Project>

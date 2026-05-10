@@ -1,0 +1,15 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <RootNamespace>Lexio.Service1.Application</RootNamespace>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="FluentValidation" />
+    <PackageReference Include="FluentValidation.DependencyInjectionExtensions" />
+    <PackageReference Include="Mapster" />
+    <PackageReference Include="Mapster.DependencyInjection" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="../Lexio.Service1.Domain/Lexio.Service1.Domain.csproj" />
+    <ProjectReference Include="../../../../src/shared/Lexio.BuildingBlocks.Abstractions/Lexio.BuildingBlocks.Abstractions.csproj" />
+  </ItemGroup>
+</Project>

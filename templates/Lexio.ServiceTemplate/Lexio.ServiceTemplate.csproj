@@ -1,0 +1,19 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <PackageType>Template</PackageType>
+    <PackageId>Lexio.ServiceTemplate</PackageId>
+    <Version>0.1.0</Version>
+    <Title>Lexio Microservice Template</Title>
+    <IncludeContentInPack>true</IncludeContentInPack>
+    <ContentTargetFolders>content</ContentTargetFolders>
+    <NoDefaultExcludes>true</NoDefaultExcludes>
+    <NoWarn>NU5128</NoWarn>
+    <EnableDefaultCompileItems>false</EnableDefaultCompileItems>
+    <IsPackable>true</IsPackable>
+  </PropertyGroup>
+  <ItemGroup>
+    <!-- Include all template content except bin/obj -->
+    <Content Include="**/*" Exclude="**/bin/**;**/obj/**" />
+    <Compile Remove="**\*" />
+  </ItemGroup>
+</Project>
