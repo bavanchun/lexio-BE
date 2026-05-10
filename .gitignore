@@ -1,0 +1,92 @@
+# ----- .NET -----
+[Bb]in/
+[Oo]bj/
+[Oo]ut/
+artifacts/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+*.userprefs
+*.pidb
+*.svclog
+*.scc
+[Pp]ackages/
+**/[Pp]ackages/build/
+*.nupkg
+*.snupkg
+.nuget/
+project.lock.json
+project.fragment.lock.json
+.dotnet/
+
+# ----- Tests / coverage -----
+[Tt]est[Rr]esult*/
+coverage/
+coverage*.json
+coverage*.xml
+*.coverage
+*.coveragexml
+*.opencover.xml
+BenchmarkDotNet.Artifacts/
+
+# ----- Build output -----
+build/
+bld/
+[Ll]og/
+[Ll]ogs/
+msbuild.log
+msbuild.err
+msbuild.wrn
+
+# ----- IDE / editor -----
+.vs/
+.vscode/*
+!.vscode/launch.json
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/extensions.json
+.idea/
+*.sublime-workspace
+*.sublime-project
+*.swp
+*.swo
+*~
+
+# ----- Snapshot / approval testing -----
+**/*.received.*
+**/*.received/
+
+# ----- Secrets / config -----
+appsettings.Local.json
+appsettings.*.local.json
+appsettings.Development.local.json
+.env
+.env.*
+!.env.example
+*.pfx
+*.snk
+*.p12
+secrets.json
+
+# ----- Node (for commitlint / FE-adjacent tooling) -----
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.pnpm-debug.log*
+
+# ----- Husky -----
+.husky/_/
+
+# ----- OS -----
+.DS_Store
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+
+# ----- Tooling caches -----
+.sonarqube/
+.scannerwork/
+.tool-versions.local
