@@ -1,0 +1,26 @@
+{
+  "$schema": "http://json.schemastore.org/template",
+  "author": "Lexio",
+  "classifications": ["Web", "Microservice", "Clean Architecture"],
+  "name": "Lexio Microservice (Clean Architecture)",
+  "identity": "Lexio.ServiceTemplate",
+  "groupIdentity": "Lexio.ServiceTemplate",
+  "shortName": "lexio-service",
+  "tags": { "language": "C#", "type": "project" },
+  "sourceName": "Service1",
+  "preferNameDirectory": false,
+  "sources": [
+    {
+      "source": "./",
+      "target": "./",
+      "exclude": [
+        ".template.config/**",
+        "Lexio.ServiceTemplate.csproj",
+        "README.md"
+      ]
+    }
+  ],
+  "primaryOutputs": [
+    { "path": "Lexio.Service1.Api/Lexio.Service1.Api.csproj" }
+  ]
+}
