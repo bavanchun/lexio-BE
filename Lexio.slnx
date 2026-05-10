@@ -1,10 +1,12 @@
 <Solution>
   <Folder Name="/src/" />
   <Folder Name="/src/shared/">
+    <Project Path="src/shared/Lexio.BuildingBlocks.Abstractions/Lexio.BuildingBlocks.Abstractions.csproj" />
     <Project Path="src/shared/Lexio.SharedKernel/Lexio.SharedKernel.csproj" />
   </Folder>
   <Folder Name="/tests/" />
   <Folder Name="/tests/shared/">
+    <Project Path="tests/shared/Lexio.BuildingBlocks.Abstractions.Tests/Lexio.BuildingBlocks.Abstractions.Tests.csproj" />
     <Project Path="tests/shared/Lexio.SharedKernel.Tests/Lexio.SharedKernel.Tests.csproj" />
   </Folder>
 </Solution>
