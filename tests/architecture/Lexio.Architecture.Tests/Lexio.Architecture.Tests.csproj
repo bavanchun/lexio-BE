@@ -1,0 +1,36 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <IsPackable>false</IsPackable>
+    <IsTestProject>true</IsTestProject>
+    <NoWarn>$(NoWarn);CS1591</NoWarn>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="xunit.v3" />
+    <PackageReference Include="xunit.runner.visualstudio">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.NET.Test.Sdk" />
+    <PackageReference Include="FluentAssertions" />
+    <PackageReference Include="NetArchTest.Rules" />
+    <PackageReference Include="coverlet.collector">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
+    </PackageReference>
+  </ItemGroup>
+
+  <!-- Project refs force assemblies into the build output so NetArchTest can load them -->
+  <ItemGroup>
+    <ProjectReference Include="../../../src/shared/Lexio.SharedKernel/Lexio.SharedKernel.csproj" />
+    <ProjectReference Include="../../../src/shared/Lexio.BuildingBlocks.Abstractions/Lexio.BuildingBlocks.Abstractions.csproj" />
+    <ProjectReference Include="../../../src/shared/Lexio.BuildingBlocks.Caching/Lexio.BuildingBlocks.Caching.csproj" />
+    <ProjectReference Include="../../../src/shared/Lexio.BuildingBlocks.Messaging/Lexio.BuildingBlocks.Messaging.csproj" />
+    <ProjectReference Include="../../../src/shared/Lexio.BuildingBlocks.Observability/Lexio.BuildingBlocks.Observability.csproj" />
+    <ProjectReference Include="../../../src/shared/Lexio.BuildingBlocks.Persistence/Lexio.BuildingBlocks.Persistence.csproj" />
+    <ProjectReference Include="../../../src/shared/Lexio.BuildingBlocks.Auth/Lexio.BuildingBlocks.Auth.csproj" />
+    <ProjectReference Include="../../../src/shared/Lexio.BuildingBlocks.Web/Lexio.BuildingBlocks.Web.csproj" />
+  </ItemGroup>
+
+</Project>
