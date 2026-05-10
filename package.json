@@ -3,7 +3,7 @@
   "private": true,
   "description": "Node devDependencies for commit linting. Not a Node app.",
   "devDependencies": {
-    "@commitlint/cli": "^19.0.0",
+    "@commitlint/cli": "^21.0.0",
     "@commitlint/config-conventional": "^19.0.0"
   }
 }
