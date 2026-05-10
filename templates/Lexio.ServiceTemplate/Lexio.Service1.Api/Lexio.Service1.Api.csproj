@@ -3,6 +3,7 @@
     <RootNamespace>Lexio.Service1.Api</RootNamespace>
   </PropertyGroup>
   <ItemGroup>
+    <PackageReference Include="Mediator.Abstractions" />
     <PackageReference Include="Mediator.SourceGenerator">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>

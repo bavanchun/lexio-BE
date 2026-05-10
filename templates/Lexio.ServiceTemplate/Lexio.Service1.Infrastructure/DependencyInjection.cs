@@ -1,6 +1,5 @@
 using Lexio.BuildingBlocks.Caching;
 using Lexio.BuildingBlocks.Messaging;
-using Lexio.BuildingBlocks.Persistence;
 using Lexio.Service1.Infrastructure.Persistence;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;

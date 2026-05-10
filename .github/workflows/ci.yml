@@ -47,7 +47,7 @@ jobs:
           --collect:"XPlat Code Coverage"
           --settings .runsettings
           --results-directory TestResults
-          --logger "github;annotations.level=error"
+          --logger "trx;LogFileName=test-results.trx"
           --logger "console;verbosity=minimal"
 
       - name: generate coverage report
@@ -123,7 +123,7 @@ jobs:
           fi
 
       - name: trivy config scan (Dockerfiles + compose)
-        uses: aquasecurity/trivy-action@0.28.0
+        uses: aquasecurity/trivy-action@0.35.0
         with:
           scan-type: config
           scan-ref: .
@@ -144,8 +144,8 @@ jobs:
       - name: install Lexio.ServiceTemplate
         run: dotnet new install ./templates/Lexio.ServiceTemplate
 
-      - name: scaffold Smoke service
-        run: dotnet new lexio-service -n Smoke -o /tmp/smoke
+      - name: scaffold Smoke service via new-service.sh
+        run: bash scripts/new-service.sh Smoke
 
-      - name: build Smoke service
-        run: dotnet build /tmp/smoke /warnaserror
+      - name: build scaffolded service
+        run: dotnet build src/services/Smoke /warnaserror
