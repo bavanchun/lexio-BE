@@ -1,0 +1,8 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <!-- No PackageReferences beyond inherited analyzers from Directory.Build.props -->
+    <RootNamespace>Lexio.SharedKernel</RootNamespace>
+  </PropertyGroup>
+
+</Project>
