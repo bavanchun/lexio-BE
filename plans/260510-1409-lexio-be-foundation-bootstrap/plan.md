@@ -1,7 +1,7 @@
 ---
 title: "Lexio BE foundation bootstrap (.NET 10 monorepo, no business logic)"
 description: "Scaffolding-only foundation for 7 future microservices: shared kernel, building blocks, polyglot infra, dotnet-new template, CI/CD, code quality."
-status: pending
+status: completed
 priority: P1
 effort: 28h
 branch: main
@@ -40,18 +40,18 @@ Foundation/scaffolding for the Lexio BE monorepo. NO microservice business logic
 
 | # | Phase | File | Depends | Effort | Status |
 |---|-------|------|---------|--------|--------|
-| 01 | Repo init: gitignore, gitattributes, editorconfig | `phase-01-repo-init-gitignore-editorconfig.md` | — | 1h | pending |
-| 02 | Directory.Build.props + Directory.Packages.props + analyzers + sln | `phase-02-directory-build-and-packages-props.md` | 01 | 2h | pending |
-| 03 | `Lexio.SharedKernel` + tests | `phase-03-shared-kernel.md` | 02 | 3h | pending |
-| 04 | `Lexio.BuildingBlocks.Abstractions` interfaces | `phase-04-building-blocks-abstractions.md` | 03 | 2h | pending |
-| 05 | BuildingBlocks impls (Caching/Messaging/Observability/Persistence/Web/Auth) | `phase-05-building-blocks-implementations.md` | 04 | 5h | pending |
-| 06 | `docker-compose.yml` polyglot stack + init scripts | `phase-06-docker-compose-polyglot-stack.md` | 04 | 2h | pending |
-| 07 | Secrets & configuration strategy + `.env.example` + runbook | `phase-07-secrets-and-config-strategy.md` | 06 | 1h | pending |
-| 08 | Custom `dotnet new lexio-service` template | `phase-08-service-template.md` | 05, 07 | 4h | pending |
-| 09 | Test infra: Testcontainers, NetArchTest, TestUtils, .runsettings | `phase-09-testing-infrastructure.md` | 08 | 2h | pending |
-| 10 | Husky.Net pre-commit + commit-msg hooks | `phase-10-husky-pre-commit-hooks.md` | 09 | 1h | pending |
-| 11 | GitHub Actions CI + dependabot + cd.yml stub | `phase-11-ci-cd-skeleton.md` | 10 | 3h | pending |
-| 12 | README + ADR set + runbooks | `phase-12-docs-skeleton-and-adrs.md` | 11 | 2h | pending |
+| 01 | Repo init: gitignore, gitattributes, editorconfig | `phase-01-repo-init-gitignore-editorconfig.md` | — | 1h | ✅ completed (PR #1) |
+| 02 | Directory.Build.props + Directory.Packages.props + analyzers + sln | `phase-02-directory-build-and-packages-props.md` | 01 | 2h | ✅ completed (PR #2) |
+| 03 | `Lexio.SharedKernel` + tests | `phase-03-shared-kernel.md` | 02 | 3h | ✅ completed (PR #3) |
+| 04 | `Lexio.BuildingBlocks.Abstractions` interfaces | `phase-04-building-blocks-abstractions.md` | 03 | 2h | ✅ completed (PR #4) |
+| 05 | BuildingBlocks impls (Caching/Messaging/Observability/Persistence/Web/Auth) | `phase-05-building-blocks-implementations.md` | 04 | 5h | ✅ completed (PR #5) |
+| 06 | `docker-compose.yml` polyglot stack + init scripts | `phase-06-docker-compose-polyglot-stack.md` | 04 | 2h | ✅ completed (PR #6) |
+| 07 | Secrets & configuration strategy + `.env.example` + runbook | `phase-07-secrets-and-config-strategy.md` | 06 | 1h | ✅ completed (PR #7) |
+| 08 | Custom `dotnet new lexio-service` template | `phase-08-service-template.md` | 05, 07 | 4h | ✅ completed (PR #8) |
+| 09 | Test infra: Testcontainers, NetArchTest, TestUtils, .runsettings | `phase-09-testing-infrastructure.md` | 08 | 2h | ✅ completed (PR #9) |
+| 10 | Husky.Net pre-commit + commit-msg hooks | `phase-10-husky-pre-commit-hooks.md` | 09 | 1h | ✅ completed (PR #10) |
+| 11 | GitHub Actions CI + dependabot + cd.yml stub | `phase-11-ci-cd-skeleton.md` | 10 | 3h | ✅ completed (PR #11) |
+| 12 | README + ADR set + runbooks | `phase-12-docs-skeleton-and-adrs.md` | 11 | 2h | ✅ completed (PR #12) |
 
 Total: ~28h. Each phase = 1 stacked PR, branched off the previous phase's branch (NOT main).
 
