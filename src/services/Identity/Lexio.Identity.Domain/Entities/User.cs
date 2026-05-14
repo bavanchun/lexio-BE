@@ -113,6 +113,11 @@ public sealed class User : AggregateRoot<UserId>, IAuditableEntity, ISoftDeletab
         return user;
     }
 
+    public void ChangeDisplayName(DisplayName newName)
+    {
+        DisplayName = newName;
+    }
+
     public void VerifyEmail(IClock clock)
     {
         if (IsVerified) { return; }
