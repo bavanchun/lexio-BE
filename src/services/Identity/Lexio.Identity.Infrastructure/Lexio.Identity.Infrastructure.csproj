@@ -11,6 +11,9 @@
     </PackageReference>
     <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" />
     <PackageReference Include="EFCore.NamingConventions" />
+    <PackageReference Include="OpenIddict.AspNetCore" />
+    <PackageReference Include="OpenIddict.EntityFrameworkCore" />
+    <PackageReference Include="BCrypt.Net-Next" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="../Lexio.Identity.Application/Lexio.Identity.Application.csproj" />

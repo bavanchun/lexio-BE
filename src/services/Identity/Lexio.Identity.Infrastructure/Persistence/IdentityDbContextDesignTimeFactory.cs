@@ -19,6 +19,7 @@ public sealed class IdentityDbContextDesignTimeFactory : IDesignTimeDbContextFac
                 npg => npg.SetPostgresVersion(18, 0)
                           .MigrationsHistoryTable("__ef_migrations_history", "public"))
             .UseSnakeCaseNamingConvention()
+            .UseOpenIddict()
             .Options;
 
         return new IdentityDbContext(options, new DesignTimeClock());

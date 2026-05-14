@@ -10,7 +10,7 @@ builder.Services.AddLexioObservability("Lexio.Identity");
 builder.Services.AddLexioWeb();
 builder.Services.AddLexioAuth(builder.Configuration);
 builder.Services.AddIdentityApplication();
-builder.Services.AddIdentityInfrastructure(builder.Configuration);
+builder.Services.AddIdentityInfrastructure(builder.Configuration, builder.Environment);
 builder.Services.AddControllers();
 builder.Services.AddHealthChecks();
 
