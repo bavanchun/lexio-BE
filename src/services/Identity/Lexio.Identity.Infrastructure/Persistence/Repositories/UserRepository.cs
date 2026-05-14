@@ -42,6 +42,12 @@ public sealed class UserRepository(IdentityDbContext db) : IUserRepository
         return db.Users.AnyAsync(u => u.Email.Value == raw, ct);
     }
 
+    public Task<bool> IsBannedAsync(UserId id, CancellationToken ct = default) =>
+        db.Users
+            .Where(u => u.Id == id)
+            .Select(u => u.Status == Domain.Enums.UserStatus.Banned)
+            .FirstOrDefaultAsync(ct);
+
     public async Task AddAsync(User user, CancellationToken ct = default)
     {
         await db.Users.AddAsync(user, ct);

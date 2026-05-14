@@ -1,6 +1,7 @@
 using Lexio.BuildingBlocks.Abstractions.Persistence;
 using Lexio.Identity.Application.Common.Errors;
 using Lexio.Identity.Application.Contracts.Persistence;
+using Lexio.Identity.Application.Contracts.Security;
 using Lexio.SharedKernel.Primitives;
 using Lexio.SharedKernel.Time;
 using Mediator;
@@ -11,6 +12,7 @@ public sealed class ChangeUserRoleCommandHandler(
     IUserRepository users,
     IRoleRepository roles,
     IUnitOfWork uow,
+    IBanStatusCache banCache,
     IClock clock)
     : ICommandHandler<ChangeUserRoleCommand, Result>
 {
@@ -24,6 +26,7 @@ public sealed class ChangeUserRoleCommandHandler(
 
         user.ChangeRole(cmd.NewRoleId, cmd.AdminUserId, clock);
         await uow.SaveChangesAsync(cancellationToken);
+        banCache.Invalidate(cmd.TargetUserId);
         return Result.Success();
     }
 }

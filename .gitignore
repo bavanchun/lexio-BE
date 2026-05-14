@@ -90,3 +90,4 @@ $RECYCLE.BIN/
 .sonarqube/
 .scannerwork/
 .tool-versions.local
+coverage-report/

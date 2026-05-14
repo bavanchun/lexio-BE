@@ -7,10 +7,10 @@
 
 ## Overview
 - Priority: P1
-- Status: pending
+- Status: complete
 - Effort: 3h
-- Branch: `feat/be-identity-api` (off phase-05)
-- PR: stacked PR #18
+- Branch: `feat/be-identity-api` (off main, post-phase-05 merge)
+- PR: https://github.com/bavanchun/lexio-BE/pull/28
 
 ASP.NET Core 10 minimal API. 8 endpoints per researcher-04 §1. Swagger via Scalar (preferred) or Swashbuckle. RFC 7807 ProblemDetails. Built-in `RateLimiter` middleware. CORS for FE origins with credentials.
 
@@ -120,16 +120,16 @@ Lexio.Identity.Api/
 11. PR #18 stacked on phase-05.
 
 ## Todo List
-- [ ] `Program.cs` complete wiring (DI + middleware order)
-- [ ] 8 endpoints implemented + ProblemDetails mapping
-- [ ] CORS policy from env
-- [ ] 3 rate-limit policies + `Retry-After`
-- [ ] `banned` claim authorization handler + `NotBanned` policy applied
-- [ ] `BanStatusCache` (IMemoryCache, 60s TTL) + invalidation on admin ban/unban
-- [ ] Scalar / OpenAPI UI
-- [ ] Curl smoke test of register→login→me→logout passes
-- [ ] Api.Tests minimal harness green
-- [ ] PR #18 opened
+- [x] `Program.cs` complete wiring (DI + middleware order)
+- [x] 8 endpoints implemented + ProblemDetails mapping
+- [x] CORS policy from env
+- [x] 3 rate-limit policies + `Retry-After`
+- [x] `banned` claim authorization handler + `NotBanned` policy applied
+- [x] `BanStatusCache` (IMemoryCache, 60s TTL) + invalidation on admin ban/unban
+- [x] Scalar / OpenAPI UI
+- [x] Curl smoke test of register→login→me→logout passes
+- [x] Api.Tests minimal harness green
+- [x] PR #18 opened
 
 ## Success Criteria
 - `curl -X POST http://localhost:5001/api/v1/auth/register -d '{"email":"a@b.c","password":"P@ss1234","displayName":"A"}'` → 201 with tokens.
