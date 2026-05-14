@@ -7,10 +7,10 @@
 
 ## Overview
 - Priority: P1
-- Status: pending
+- Status: complete
 - Effort: 4h
 - Branch: `feat/be-identity-openiddict` (off phase-04)
-- PR: stacked PR #17
+- PR: https://github.com/bavanchun/lexio-BE/pull/27
 
 OpenIddict 6 server (token issuance only — NOT full OAuth UI flows for MVP). RS256 signing with file-backed or X.509 dev cert. `BCryptPasswordHasher : IPasswordHasher`. `OpenIddictTokenIssuer : ITokenIssuer`. Refresh-token storage layered on top of `RefreshToken` entity from phase-02 (NOT OpenIddict's built-in token store — to keep schema explicit and audit-friendly).
 
@@ -87,17 +87,17 @@ Lexio.Identity.Infrastructure/
 10. PR #17 stacked on phase-04.
 
 ## Todo List
-- [ ] OpenIddict + bcrypt pkg pins
-- [ ] `BCryptPasswordHasher` (with timing-constant Verify)
-- [ ] `RefreshTokenGenerator`
-- [ ] `OpenIddictTokenIssuer` (issue + rotate with 30s grace)
-- [ ] `RefreshToken.IsActive(IClock)` domain predicate (grace-window aware)
-- [ ] `SigningCertificateLoader`
-- [ ] `AddIdentityOpenIddict` extension
-- [ ] `AddOpenIddictTables` migration
-- [ ] Dev cert verified locally; JWT parseable
-- [ ] Unit tests green
-- [ ] PR #17 opened
+- [x] OpenIddict + bcrypt pkg pins
+- [x] `BCryptPasswordHasher` (with timing-constant Verify)
+- [x] `RefreshTokenGenerator`
+- [x] `OpenIddictTokenIssuer` (issue + rotate with 30s grace)
+- [x] `RefreshToken.IsActive(IClock)` domain predicate (grace-window aware)
+- [x] `SigningCertificateLoader`
+- [x] `AddIdentityOpenIddict` extension
+- [x] `AddOpenIddictTables` migration
+- [x] Dev cert verified locally; JWT parseable
+- [x] Unit tests green
+- [x] PR #17 opened
 
 ## Success Criteria
 - Local `dotnet run` issues a valid RS256 JWT verifiable at https://jwt.io with the dev public key.
