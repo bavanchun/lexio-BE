@@ -1,0 +1,26 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <IsPackable>false</IsPackable>
+    <IsTestProject>true</IsTestProject>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="xunit.v3" />
+    <PackageReference Include="xunit.runner.visualstudio">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.NET.Test.Sdk" />
+    <PackageReference Include="FluentAssertions" />
+    <PackageReference Include="NetArchTest.Rules" />
+    <PackageReference Include="coverlet.collector">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
+    </PackageReference>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="../../Lexio.Identity.Domain/Lexio.Identity.Domain.csproj" />
+    <ProjectReference Include="../../Lexio.Identity.Application/Lexio.Identity.Application.csproj" />
+    <ProjectReference Include="../../Lexio.Identity.Infrastructure/Lexio.Identity.Infrastructure.csproj" />
+    <ProjectReference Include="../../Lexio.Identity.Api/Lexio.Identity.Api.csproj" />
+  </ItemGroup>
+</Project>

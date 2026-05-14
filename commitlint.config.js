@@ -21,6 +21,7 @@ module.exports = {
         'be-bb-abstractions',
         'be-bb-impls',
         'be-bb',
+        'be-identity',
       ],
     ],
     // Allow any case in subject (sentence-case, lower-case both fine)

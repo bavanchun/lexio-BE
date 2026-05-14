@@ -1,5 +1,18 @@
 <Solution>
   <Folder Name="/src/" />
+  <Folder Name="/src/services/" />
+  <Folder Name="/src/services/Identity/">
+    <Project Path="src/services/Identity/Lexio.Identity.Api/Lexio.Identity.Api.csproj" />
+    <Project Path="src/services/Identity/Lexio.Identity.Application/Lexio.Identity.Application.csproj" />
+    <Project Path="src/services/Identity/Lexio.Identity.Domain/Lexio.Identity.Domain.csproj" />
+    <Project Path="src/services/Identity/Lexio.Identity.Infrastructure/Lexio.Identity.Infrastructure.csproj" />
+  </Folder>
+  <Folder Name="/src/services/Identity/tests/">
+    <Project Path="src/services/Identity/tests/Lexio.Identity.Api.Tests/Lexio.Identity.Api.Tests.csproj" />
+    <Project Path="src/services/Identity/tests/Lexio.Identity.Application.Tests/Lexio.Identity.Application.Tests.csproj" />
+    <Project Path="src/services/Identity/tests/Lexio.Identity.Domain.Tests/Lexio.Identity.Domain.Tests.csproj" />
+    <Project Path="src/services/Identity/tests/Lexio.Identity.Infrastructure.Tests/Lexio.Identity.Infrastructure.Tests.csproj" />
+  </Folder>
   <Folder Name="/src/shared/">
     <Project Path="src/shared/Lexio.BuildingBlocks.Abstractions/Lexio.BuildingBlocks.Abstractions.csproj" />
     <Project Path="src/shared/Lexio.BuildingBlocks.Auth/Lexio.BuildingBlocks.Auth.csproj" />
