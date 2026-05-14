@@ -12,7 +12,7 @@ public sealed class ArchitectureTests
     [Fact]
     public void Domain_ShouldNot_DependOn_Infrastructure()
     {
-        var result = Types.InAssembly(typeof(Lexio.Identity.Domain.DomainAnchor).Assembly)
+        var result = Types.InAssembly(typeof(Lexio.Identity.Domain.Entities.User).Assembly)
             .ShouldNot().HaveDependencyOn("Lexio.Identity.Infrastructure")
             .GetResult();
 
@@ -23,7 +23,7 @@ public sealed class ArchitectureTests
     [Fact]
     public void Domain_ShouldNot_DependOn_Application()
     {
-        var result = Types.InAssembly(typeof(Lexio.Identity.Domain.DomainAnchor).Assembly)
+        var result = Types.InAssembly(typeof(Lexio.Identity.Domain.Entities.User).Assembly)
             .ShouldNot().HaveDependencyOn("Lexio.Identity.Application")
             .GetResult();
 
@@ -60,5 +60,27 @@ public sealed class ArchitectureTests
 
         result.IsSuccessful.Should().BeTrue(
             because: "Infrastructure must not reference the Api presentation layer");
+    }
+
+    [Fact]
+    public void Domain_ShouldNot_DependOn_EntityFrameworkCore()
+    {
+        var result = Types.InAssembly(typeof(Lexio.Identity.Domain.Entities.User).Assembly)
+            .ShouldNot().HaveDependencyOn("Microsoft.EntityFrameworkCore")
+            .GetResult();
+
+        result.IsSuccessful.Should().BeTrue(
+            because: "Domain must remain persistence-agnostic");
+    }
+
+    [Fact]
+    public void Domain_ShouldNot_DependOn_AspNetCore()
+    {
+        var result = Types.InAssembly(typeof(Lexio.Identity.Domain.Entities.User).Assembly)
+            .ShouldNot().HaveDependencyOnAny("Microsoft.AspNetCore", "Microsoft.AspNetCore.Http")
+            .GetResult();
+
+        result.IsSuccessful.Should().BeTrue(
+            because: "Domain must remain web-framework-agnostic");
     }
 }
