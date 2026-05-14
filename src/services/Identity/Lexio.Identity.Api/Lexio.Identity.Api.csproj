@@ -1,0 +1,18 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+  <PropertyGroup>
+    <RootNamespace>Lexio.Identity.Api</RootNamespace>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="Mediator.Abstractions" />
+    <PackageReference Include="Mediator.SourceGenerator">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
+    </PackageReference>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="../Lexio.Identity.Application/Lexio.Identity.Application.csproj" />
+    <ProjectReference Include="../Lexio.Identity.Infrastructure/Lexio.Identity.Infrastructure.csproj" />
+    <ProjectReference Include="../../../../src/shared/Lexio.BuildingBlocks.Web/Lexio.BuildingBlocks.Web.csproj" />
+    <ProjectReference Include="../../../../src/shared/Lexio.BuildingBlocks.Observability/Lexio.BuildingBlocks.Observability.csproj" />
+  </ItemGroup>
+</Project>
