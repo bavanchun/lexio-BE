@@ -3,7 +3,7 @@
     <RootNamespace>Lexio.Identity.Domain</RootNamespace>
   </PropertyGroup>
   <ItemGroup>
-    <!-- SharedKernel path is relative to this template — adjust when adding to the monorepo -->
     <ProjectReference Include="../../../../src/shared/Lexio.SharedKernel/Lexio.SharedKernel.csproj" />
+    <ProjectReference Include="../../../../src/shared/Lexio.BuildingBlocks.Abstractions/Lexio.BuildingBlocks.Abstractions.csproj" />
   </ItemGroup>
 </Project>
