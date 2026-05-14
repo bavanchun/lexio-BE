@@ -187,6 +187,14 @@ public class UserTests
     }
 
     [Fact]
+    public void ChangeDisplayName_replaces_value()
+    {
+        var user = RegisterTestUser();
+        user.ChangeDisplayName(DisplayName.From("Alice Smith"));
+        user.DisplayName.Value.Should().Be("Alice Smith");
+    }
+
+    [Fact]
     public void Aggregate_has_parameterless_ctor_for_ef_materialisation()
     {
         var ctor = typeof(User).GetConstructor(
