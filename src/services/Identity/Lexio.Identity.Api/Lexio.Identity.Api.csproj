@@ -4,6 +4,7 @@
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="Mediator.Abstractions" />
+    <PackageReference Include="Microsoft.AspNetCore.OpenApi" />
     <!-- Mediator.SourceGenerator runs in Application only; emitting it in Api would
          produce a duplicate dispatcher type and conflict on `Mediator` symbol. -->
   </ItemGroup>

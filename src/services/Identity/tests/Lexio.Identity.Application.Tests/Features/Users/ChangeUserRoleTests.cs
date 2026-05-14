@@ -1,5 +1,6 @@
 using Lexio.BuildingBlocks.Abstractions.Persistence;
 using Lexio.Identity.Application.Contracts.Persistence;
+using Lexio.Identity.Application.Contracts.Security;
 using Lexio.Identity.Application.Features.Users.ChangeRole;
 using Lexio.Identity.Domain.Entities;
 using Lexio.Identity.Domain.Primitives;
@@ -33,7 +34,7 @@ public class ChangeUserRoleTests
         roles.Setup(r => r.GetByIdAsync(newRole.Id, It.IsAny<CancellationToken>())).ReturnsAsync(newRole);
         var uow = new Mock<IUnitOfWork>();
 
-        var result = await new ChangeUserRoleCommandHandler(users.Object, roles.Object, uow.Object, _clock)
+        var result = await new ChangeUserRoleCommandHandler(users.Object, roles.Object, uow.Object, Mock.Of<IBanStatusCache>(), _clock)
             .Handle(new ChangeUserRoleCommand(user.Id, newRole.Id, UserId.New()), TestContext.Current.CancellationToken);
 
         result.IsSuccess.Should().BeTrue();
@@ -50,7 +51,7 @@ public class ChangeUserRoleTests
         roles.Setup(r => r.GetByIdAsync(It.IsAny<RoleId>(), It.IsAny<CancellationToken>())).ReturnsAsync((Role?)null);
         var uow = new Mock<IUnitOfWork>();
 
-        var result = await new ChangeUserRoleCommandHandler(users.Object, roles.Object, uow.Object, _clock)
+        var result = await new ChangeUserRoleCommandHandler(users.Object, roles.Object, uow.Object, Mock.Of<IBanStatusCache>(), _clock)
             .Handle(new ChangeUserRoleCommand(user.Id, RoleId.New(), UserId.New()), TestContext.Current.CancellationToken);
 
         result.IsFailure.Should().BeTrue();
