@@ -10,7 +10,7 @@
 - Status: complete
 - Effort: 3h
 - Branch: `feat/be-identity-api` (off main, post-phase-05 merge)
-- PR: see PR url after push
+- PR: https://github.com/bavanchun/lexio-BE/pull/28
 
 ASP.NET Core 10 minimal API. 8 endpoints per researcher-04 §1. Swagger via Scalar (preferred) or Swashbuckle. RFC 7807 ProblemDetails. Built-in `RateLimiter` middleware. CORS for FE origins with credentials.
 
